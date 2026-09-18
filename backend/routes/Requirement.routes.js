@@ -6,13 +6,11 @@ const {
   getRequirementById,
 } = require('../controllers/Requirement.controller');
 
-// POST /api/requirements  -> create a new requirement
+// POST 
 router.post('/', createRequirement);
-
-// GET /api/requirements  -> list all (optionally ?category=planner|performer|crew)
 router.get('/', getRequirements);
 
-// GET /api/requirements/:id  -> get a single requirement
-router.get('/:id', getRequirementById);
+
+
 
 module.exports = router;

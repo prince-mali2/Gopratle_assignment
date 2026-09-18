@@ -1,7 +1,7 @@
 const Requirement = require('../models/Requirement');
 
 // POST /api/requirements
-// Creates a new requirement, categorized under planner/performer/crew
+
 const createRequirement = async (req, res) => {
   try {
     const { eventName, eventType, dateRange, location, venue, category, details } = req.body;
@@ -32,7 +32,7 @@ const createRequirement = async (req, res) => {
 };
 
 // GET /api/requirements
-// Returns all requirements, optionally filtered by category (?category=planner)
+
 const getRequirements = async (req, res) => {
   try {
     const { category } = req.query;
@@ -46,24 +46,10 @@ const getRequirements = async (req, res) => {
   }
 };
 
-// GET /api/requirements/:id
-const getRequirementById = async (req, res) => {
-  try {
-    const requirement = await Requirement.findById(req.params.id);
 
-    if (!requirement) {
-      return res.status(404).json({ message: 'Requirement not found' });
-    }
-
-    return res.status(200).json({ data: requirement });
-  } catch (error) {
-    console.error('getRequirementById error:', error);
-    return res.status(500).json({ message: 'Server error', error: error.message });
-  }
-};
 
 module.exports = {
   createRequirement,
   getRequirements,
-  getRequirementById,
+
 };
